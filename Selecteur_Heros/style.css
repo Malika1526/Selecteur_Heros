@@ -1,0 +1,204 @@
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 55vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+body {
+  height: 100vh;
+  background: #242732;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+div {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  color: #FFFFFF;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: cursive;
+}
+
+div:hover {
+  color: rgb(88 199 250 / 100%);
+  transition: color 1s;
+}
+
+div:hover:before, div:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+div::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+div::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+  opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+label {
+  padding-top: 45px;
+  padding-bottom: 15px;
+  font-family: cursive;
+  color: #FFFFFF;
+  font-size: 49px;
+  text-align: center;
+  text-shadow: #FFFFFF 0 0 24px, #002b7b 0 0 45px, #3c67e3 0 0 55px, #4e00c2 0 0 65px;
+}
+
+label:hover {
+  text-shadow: #FFFFFF 0 0 30px, #5ddcff 0 0 55px, #3c67e3 0 0 65px, #4e00c2 0 0 75px;
+}
+
+#myForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+select {
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: 55px;
+  border-radius: 3px;
+  backdrop-filter: blur(5px);
+  background-color: rgb(255, 255, 255);
+  border-color: rgba(243, 236, 236, 0);
+  width: 350px;
+  height: 30px;
+  text-align: left;  
+  color: rgb(0, 0, 0);
+  box-shadow: #FFFFFF 0 0 12px, #5ddcff 0 0 25px, #3c67e3 0 0 35px, #4e00c2 0 0 45px; 
+}
+
+#submit {
+  padding: 10px;
+  margin: 10px;
+  margin-bottom: 55px;
+  border-radius: 3px;
+  background-color: white;
+  border-color: rgba(255, 255, 255, 0);
+  width: 150px;
+  height: auto;
+  text-align: center;
+  box-shadow: #FFFFFF 0 0 12px, #5ddcff 0 0 25px, #3c67e3 0 0 35px, #4e00c2 0 0 45px; 
+}
+
+#submit:hover {
+  background-color: #faf9f9;
+  box-shadow: #FFFFFF 0 0 12px, #5ddcff 0 0 25px, #3c67e3 0 0 35px, #4e00c2 0 0 45px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  :root {
+    --card-height: 45vh;
+  }
+
+  label {
+    font-size: 36px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+
+  #myForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  select, #submit {
+    width: 90%;
+    max-width: none;
+    margin: 10px auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --card-height: 40vh;
+  }
+
+  label {
+    font-size: 28px;
+  }
+
+  div {
+    font-size: 14px;
+  }
+
+  select, #submit {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  :root {
+    --card-height: 60vh;
+  }
+
+  label {
+    padding-top: 20px;
+    padding-bottom: 5px;
+  }
+
+  #myForm {
+    margin-bottom: 20px;
+  }
+}
