@@ -1,32 +1,3 @@
-// "use strict";
-
-// const url = "./hero.json";
-
-// fetch(url).then(handleFetch);
-
-// function handleFetch(response)
-// {
-//     console.log(response.ok);
-
-//     if(response.ok)
-//     {
-        
-//         response.json()
-//             .then(data=>{
-//                 document.body.innerHTML += `<h2>${data.squadName}</h2>`+ `<p>${data.homeTown + data.formed + data.secretBase}</p>`;
-
-
-
-//             })
-//             .catch(error=>console.error(error));
-//     }
-//     else
-//     {
-//         console.error(response.statusText);
-//     }
-// }
-
-
 "use strict";
 
 const url = "./hero.json"; 
@@ -84,26 +55,7 @@ function handleFetch(response) {
                         }
                     });
                 }
-                // const btn = document.querySelector('#submit');
-                // btn.addEventListener('click', result);
 
-                // function result() {
-
-                //     if (secretIdentity == option.value) {
-                        
-                //     data.members.forEach(element => {
-                //         const choice = document.createElement('p');
-                //         choice.textContent = element.name; 
-                //         choice.textContent = element.age;
-                //         choice.textContent = element.powers; 
-                //         choice.textContent = element.secretIdentity; 
-
-                //         document.body.appendChild(choice);
-                //     });
-                    
-
-                // }
-                // }
             })
             
             .catch(error => console.error('Erreur lors de la récupération des données:', error));
